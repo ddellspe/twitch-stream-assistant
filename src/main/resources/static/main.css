@@ -1,0 +1,26 @@
+.username {
+    font-weight: 700;
+}
+
+.row .message {
+    padding: 5px 20px 5px 0;
+    line-height: 1.5em;
+}
+
+.chat-badge {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.row span {
+    width: fit-content;
+    padding: 0 5px 0 0;
+    margin: 0;
+}
+
+.chat-emote {
+    height: 2.5em;
+    width: 2.5em;
+    margin: -0.25em 0;
+    padding: 0;
+}

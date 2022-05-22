@@ -1,0 +1,12 @@
+#####################################################
+# Example configuration for twitch-stream-assistant #
+#####################################################
+debug: false
+api:
+    # Client ID and Client Secret from https://dev.twitch.tv/console/apps (you'll need to register an app first)
+    twitch_client_id: YOUR_CLIENT_ID
+    twitch_client_secret: YOUR_CLIENT_SECRET
+credentials:
+    # OAuth Token for IRC User can be obtained at http://twitchapps.com/tmi/
+    irc: YOUR_IRC_TOKEN
+channel: YOUR_CHANNEL
