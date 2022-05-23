@@ -1,13 +1,21 @@
 package net.ddellspe.twitchstreamassistant.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import com.github.twitch4j.chat.events.channel.ChannelMessageActionEvent;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import com.github.twitch4j.chat.events.channel.IRCMessageEvent;
 import com.github.twitch4j.common.enums.CommandPermission;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -17,10 +25,10 @@ public class TwitchChatMessageTest {
   public void testEmoteParsingWithMultipleLocationsForASingleEmote() {
     List<TwitchChatMessage.EmoteLocation> expectedLocations =
         List.of(
-            new TwitchChatMessage.EmoteLocation(
-                10, 17, "emotesv2_b82879c544754d0793fa79de06c10f40"),
+            new TwitchChatMessage.EmoteLocation(0, 3, "emotesv2_6f762cfbb37a4a1db4f31c21599947ee"),
             new TwitchChatMessage.EmoteLocation(5, 8, "emotesv2_6f762cfbb37a4a1db4f31c21599947ee"),
-            new TwitchChatMessage.EmoteLocation(0, 3, "emotesv2_6f762cfbb37a4a1db4f31c21599947ee"));
+            new TwitchChatMessage.EmoteLocation(
+                10, 17, "emotesv2_b82879c544754d0793fa79de06c10f40"));
     List<TwitchChatMessage.EmoteLocation> actualLocations =
         TwitchChatMessage.EmoteLocation.parse(
             "emotesv2_6f762cfbb37a4a1db4f31c21599947ee:0-3,5-8/emotesv2_b82879c544754d0793fa79de06c10f40:10-17");
