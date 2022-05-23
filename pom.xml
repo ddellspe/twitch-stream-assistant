@@ -101,6 +101,14 @@
             <artifactId>twitch4j</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
@@ -207,7 +215,7 @@
                             <volumes>
                                 <volume>/app/resources/configs/</volume>
                                 <volume>/app/resources/logs/</volume>
-                                <volume>/app/resources/img/</volume>
+                                <volume>/app/resources/static/img/</volume>
                             </volumes>
                             <ports>
                                 <port>8080</port>
@@ -364,12 +372,12 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.43</minimum>
+                                            <minimum>0.37</minimum>
                                         </limit>
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.47</minimum>
+                                            <minimum>0.33</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

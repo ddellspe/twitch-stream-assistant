@@ -14,6 +14,8 @@ public class BotConfiguration {
 
   private Map<String, String> credentials;
 
+  private Map<String, String> features;
+
   private String channel;
 
   public Boolean getDebug() {
@@ -40,6 +42,14 @@ public class BotConfiguration {
     this.credentials = credentials;
   }
 
+  public Map<String, String> getFeatures() {
+    return features;
+  }
+
+  public void setFeatures(Map<String, String> features) {
+    this.features = features;
+  }
+
   public String getChannel() {
     return channel;
   }
@@ -57,6 +67,8 @@ public class BotConfiguration {
         + api
         + ", credentials="
         + credentials
+        + ", features="
+        + features
         + ", channel='"
         + channel
         + '\''

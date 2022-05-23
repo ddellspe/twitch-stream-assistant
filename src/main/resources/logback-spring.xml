@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="./logs"/>
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %gray(%d{ISO8601}) %highlight(%-5level) [%blue(%t{10})] %yellow(%logger{25}): %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+    <root level="info">
+        <appender-ref ref="Console"/>
+    </root>
+    <logger name="net.ddellspe" level="info" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+</configuration>

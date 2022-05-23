@@ -20,9 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import net.ddellspe.twitchstreamassistant.config.BotConfiguration;
+import net.ddellspe.twitchstreamassistant.plugins.HandleChatEventsPlugin;
 import net.ddellspe.twitchstreamassistant.plugins.HelpPlugin;
-import net.ddellspe.twitchstreamassistant.plugins.WriteChatToChatLogFilePlugin;
-import net.ddellspe.twitchstreamassistant.plugins.WriteChatToWebSocketPlugin;
 import org.springframework.context.ApplicationContext;
 
 public class Bot {
@@ -67,11 +66,8 @@ public class Bot {
         twitchClientForWebhooks.getEventManager().getEventHandler(SimpleEventHandler.class);
     SimpleEventHandler botResponseEventHandler =
         twitchClient.getEventManager().getEventHandler(SimpleEventHandler.class);
-    WriteChatToWebSocketPlugin chatToWebSocketPlugin =
-        context.getBean(WriteChatToWebSocketPlugin.class);
-    chatToWebSocketPlugin.setEventHandler(inboundMessageEventHandler);
-    WriteChatToChatLogFilePlugin chatToChatLogFilePlugin =
-        new WriteChatToChatLogFilePlugin(inboundMessageEventHandler);
+    HandleChatEventsPlugin chatToWebSocketPlugin = context.getBean(HandleChatEventsPlugin.class);
+    chatToWebSocketPlugin.setEventHandler(inboundMessageEventHandler, configuration);
     HelpPlugin helpPlugin = new HelpPlugin(botResponseEventHandler);
   }
 

@@ -10,3 +10,9 @@ credentials:
     # OAuth Token for IRC User can be obtained at http://twitchapps.com/tmi/
     irc: YOUR_IRC_TOKEN
 channel: YOUR_CHANNEL
+
+features:
+    # log all chat messages in irc-like log way to a log file
+    log: true
+    # log all chat messages in raw message form to a log file (includes metadata)
+    log_raw: true
