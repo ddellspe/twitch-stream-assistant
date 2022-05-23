@@ -24,7 +24,7 @@ function disconnect() {
 
 function displayMessage(chatMessage) {
     let message = JSON.parse(chatMessage.body);
-    let messageRow = "<div class='row message'>"
+    let messageRow = "<div class='row message'><div class='inline-message'>"
     messageRow += "<span class='username' "
     messageRow += "style='color: " + message.tags.color + "'>"
     if (message.badges && message.badges.length > 0) {
@@ -33,25 +33,30 @@ function displayMessage(chatMessage) {
                                    badge.replace("/", "_") + "\" alt=\"" +
                                    badge.split("/")[0] + "\" class=\"chat-badge\"> ")
     }
-    messageRow += message.username
-    messageRow += ": </span><span class='message-content'>"
-    let msg = message.message
+    messageRow += "<span class='user'>" + message.username + "</span>"
+    messageRow += "</span><span class='text-fragment'>: </span><span class='message-content'>"
+    let msg = ""
+    let pos = 0
     if (message.emotes && message.emotes.length > 0) {
         for(let i = 0 ; i < message.emotes.length ; i++) {
             let emoteLoc = message.emotes[i];
+            if (emoteLoc.startIndex > pos) {
+                msg += "<span class='text'>" + message.message.substring(pos, emoteLoc.startIndex) + "</span>"
+            }
             let emoteName = msg.slice(emoteLoc.startIndex, emoteLoc.endIndex + 1)
-            msg = msg.substring(0, emoteLoc.startIndex) +
-                  "<img src=\"/img/emotes/" +
+            msg += "<img src=\"/img/emotes/" +
                   emoteLoc.emoteId +
                   "\" alt=\"" +
                   emoteName +
-                  "\" class=\"chat-emote\">" +
-                  msg.slice(emoteLoc.endIndex + 1)
-            console.log(msg);
+                  "\" class=\"chat-emote\">"
+            pos = emoteLoc.endIndex + 1
         }
     }
+    if (message.message.length > pos) {
+        msg += "<span class='text'>" + message.message.substring(pos) + "</span>"
+    }
     messageRow += msg
-    messageRow += "</span></div>";
+    messageRow += "</span></div></div>";
 
     $("#messages").append(messageRow);
 }

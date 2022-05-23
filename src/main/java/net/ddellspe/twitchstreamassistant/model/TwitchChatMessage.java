@@ -4,7 +4,13 @@ import com.github.twitch4j.chat.events.channel.ChannelMessageActionEvent;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import com.github.twitch4j.chat.events.channel.IRCMessageEvent;
 import com.github.twitch4j.common.enums.CommandPermission;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
@@ -124,7 +130,7 @@ public class TwitchChatMessage {
 
     @Override
     public int compareTo(@NonNull TwitchChatMessage.EmoteLocation o) {
-      return o.startIndex - startIndex;
+      return startIndex - o.startIndex;
     }
 
     @Override
